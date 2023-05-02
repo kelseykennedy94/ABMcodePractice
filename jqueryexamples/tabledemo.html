@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            font-family: sans-serif;
+        }
+        td, th{
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th{
+            background-color: lawngreen;
+        }
+        td{
+            background-color: lightgrey;
+        }
+        .red-text{
+            color: red;
+        }
+        button{
+            background-color: violet;
+        	font-family: sans-serif;
+        	font-weight: bold;
+        	padding: 8px;
+        }
+    </style>
+    <script>
+		$(document).ready(function(){
+            $('#checkboxname1').change(function(){
+                if($(this).prop('checked')){
+                    $('#name1').css("color", "red");
+                }
+                else{
+                    $('#name1').css("color", "black");
+                }
+            });
+
+            $('#checkboxname2').change(function(){
+                if($(this).prop('checked')){
+                    $('#name2').css("color", "red");
+                }
+                else{
+                    $('#name2').css("color", "black");
+                }
+            });
+
+            $('#checkboxname3').change(function(){
+                if($(this).prop('checked')){
+                    $('#name3').css("color", "red");
+                }
+                else{
+                    $('#name3').css("color", "black");
+                }
+            });
+
+            $('#checkboxname0').change(function(){
+                $('tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+
+                if($(this).prop('checked')){
+                    $('#name0, #age0, #gender0, #college0').css("color", "blue");
+                } 
+                else{
+                    $('#name0, #age0, #gender0, #college0').css("color", "black");
+                }
+
+                var checkedCount = $('tbody input[type="checkbox"]:checked').length;
+                console.log(checkedCount);
+            });
+
+            $('#find').click(function(){
+                var value = $('tbody tr:eq(4) td:eq(4)').text();
+                alert(value);
+            });
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="checkboxname0"></th>
+                <th id="name0">Name</th>
+                <th id="age0">Age</th>
+                <th id="gender0">Gender</th>
+                <th id="college0">College</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<button id="find">Find row 5, column 5</button><br><br>
+            <tr>
+                <td><input type="checkbox" id="checkboxname1"></td>
+                <td id="name1">John</td>
+                <td>30</td>
+                <td>Male</td>
+                <td>ABM College</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="checkboxname2"></td>
+                <td id="name2">Kelsey</td>
+                <td>29</td>
+                <td>Female</td>
+                <td>XYZ College</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="checkboxname3"></td>
+                <td id="name3">Israa</td>
+                <td>20</td>
+                <td>Female</td>
+                <td>ABC College</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="checkboxname4"></td>
+                <td id="name4">Rownie</td>
+                <td>22</td>
+                <td>Male</td>
+                <td>ABM College</td>
+            </tr>
+			<tr>
+                <td><input type="checkbox" id="checkboxname5"></td>
+                <td id="name5">Basant</td>
+                <td>29</td>
+                <td>Male</td>
+                <td>WSD College</td>
+            </tr>
+			<tr>
+                <td><input type="checkbox" id="checkboxname6"></td>
+                <td id="name6">Rakesh</td>
+                <td>34</td>
+                <td>Male</td>
+                <td>ABC College</td>
+            </tr>
+			<tr>
+                <td><input type="checkbox" id="checkboxname7"></td>
+                <td id="name7">Dmytro</td>
+                <td>35</td>
+                <td>Male</td>
+                <td>XYZ College</td>
+            </tr>
+           
+        </tbody>
+    </table>
+</body>
+</html>
