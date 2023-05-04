@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Div</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        #myDiv {
+            width: 200px;
+            height: 200px;
+            font-size: 16px;
+            border: 1px solid black;
+            padding: 10px;
+            background-color: violet;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#resizeButton').click(function () {
+
+                var isBig = $('#myDiv').hasClass('big');
+                var newWidth = isBig ? '200px' : '400px';
+                var newHeight = isBig ? '200px' : '400px';
+                var newFontSize = isBig ? '16px' : '50px';
+
+                $('#myDiv').animate({
+                    width: newWidth,
+                    height: newHeight,
+                    fontSize: newFontSize
+                }, 500);
+
+                setTimeout(function () {
+                    $('#myDiv').toggleClass('big');
+                }, 500);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="resizeButton">Click me</button><br /><br />
+    <div id="myDiv">
+        <p></p>asdf jkal adafk m dkal anfjgr ne  njas kjn najdkla .
+    </div>
+</body>
+</html>

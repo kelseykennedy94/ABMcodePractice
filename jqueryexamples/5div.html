@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>5Div</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        #div1{
+            color: red;
+        }
+        #div2{
+            color: orange;
+        }
+        #div3{
+            color: lawngreen;
+        }
+        #div4{
+            color: dodgerblue;
+        }
+        #div5{
+            color: mediumpurple;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+           $('div').each(function () {
+                var text = $(this).find('h1').text();
+                console.log(text);
+           });
+        });
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <h1>
+            div 1 txt
+        </h1>
+    </div>
+    <div id="div2">
+        <h1>
+            div 2 txt
+        </h1>
+    </div>
+    <div id="div3">
+        <h1>
+            div 3 txt
+        </h1>
+    </div>
+    <div id="div4">
+        <h1>
+            div 4 txt
+        </h1>
+    </div>
+    <div id="div5">
+        <h1>
+            div 5 txt
+        </h1>
+    </div>
+</body>
+</html>

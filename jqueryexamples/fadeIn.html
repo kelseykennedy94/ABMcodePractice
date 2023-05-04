@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        $('#showP').click(function () {
+            $('#paragraph1, #paragraph2, #paragraph3').each(function (i) {
+                $(this).delay(500 * i).fadeIn(1000);
+            });
+        });
+    });
+
+</script>
+<style>
+    .hidden {
+        display: none;
+    }
+    #showP{
+        background-color: mediumpurple;
+    }
+    #paragraph1{
+        background-color: mediumvioletred;
+    }
+    #paragraph2{
+        background-color: lightseagreen;
+    }
+    #paragraph3{
+        background-color: greenyellow;
+    }
+    span {
+        display: inline;
+        margin: 0;
+    }
+</style>
+<body>
+    <button id="showP">Show Paragraphs</button><br /><br />
+    <span id="paragraph1" class="hidden">First paragraph</span>
+    <span id="paragraph2" class="hidden">Second paragraph</span>
+    <span id="paragraph3" class="hidden">Third paragraph</span>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>paragraph</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<style>
+#button1{
+	background-color: red;
+	color: white;
+}
+#button2{
+	background-color: limegreen;
+	color: white;
+}
+#button3{
+	background-color: royalblue;
+	color: white;
+}
+#paragraph1{
+	background-color: white;
+	padding: 10px;
+}
+</style>
+<script>
+	$(document).ready(function(){
+		$('#button1').click(function(){
+			$('#paragraph1').css('background-color', 'red');
+		});
+		$('#button2').click(function(){
+			$('#paragraph1').css('background-color', 'limegreen');
+		});
+		$('#button3').click(function(){
+			$('#paragraph1').css('background-color', 'royalblue');
+		});
+	});
+</script>
+<body>
+<button id="button1">Red</button>
+<button id="button2">Green</button>
+<button id="button3">Blue</button>
+<marquee><p id="paragraph1">ajfdkl ajgkal n gnfkj g rnj a f najk nr ja ngrana nrgs</p></marquee>
+</body>
+</html>

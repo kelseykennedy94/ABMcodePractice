@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        table, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .red {
+            background-color: red;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .green {
+            background-color: green;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .white {
+            background-color: white;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('#a1Button').click(function() {
+                $('#a1').removeClass('blue green yellow white').addClass('red');
+                console.log('a1 clicked');
+            });
+
+            $('#a2Button').click(function() {
+                $('#a2').removeClass('blue green yellow white').addClass('red');
+                console.log('a2 clicked');
+            });
+
+            $('#a3Button').click(function() {
+                $('#a3').removeClass('blue green yellow white').addClass('red');
+                console.log('a3 clicked');
+            });
+
+            $('#a4Button').click(function() {
+                $('#a4').removeClass('blue green yellow white').addClass('red');
+                console.log('a4 clicked');
+            });
+
+            $('#b1Button').click(function() {
+                $('#b1').removeClass('red green yellow white').addClass('blue');
+                console.log('b1 clicked');
+            });
+
+            $('#b2Button').click(function() {
+                $('#b2').removeClass('red green yellow white').addClass('blue');
+                console.log('b2 clicked');
+             });
+
+            $('#b3Button').click(function() {
+                $('#b3').removeClass('red green yellow white').addClass('blue');
+                console.log('b3 clicked');
+            });
+
+            $('#b4Button').click(function() {
+                $('#b4').removeClass('red green yellow white').addClass('blue');
+                console.log('b4 clicked');
+            });
+
+            $('#c1Button').click(function() {
+                $('#c1').removeClass('red blue yellow white').addClass('green');
+                console.log('c1 clicked');
+            });
+
+            $('#c2Button').click(function() {
+                $('#c2').removeClass('red blue yellow white').addClass('green');
+                console.log('c2 clicked');
+            });
+
+            $('#c3Button').click(function() {
+                $('#c3').removeClass('red blue yellow white').addClass('green');
+                console.log('c3 clicked');
+            });
+
+            $('#c4Button').click(function() {
+                $('#c4').removeClass('red blue yellow white').addClass('green');
+                console.log('c4 clicked');
+            });
+
+            $('#d1Button').click(function() {
+                $('#d1').removeClass('red blue green white').addClass('yellow');
+                console.log('d1 clicked');
+            });
+
+            $('#d2Button').click(function() {
+                $('#d2').removeClass('red blue green white').addClass('yellow');
+                console.log('d2 clicked');
+            });
+
+            $('#d3Button').click(function() {
+                $('#d3').removeClass('red blue green white').addClass('yellow');
+                console.log('d3 clicked');
+            });
+
+            $('#d4Button').click(function() {
+                $('#d4').removeClass('red blue green white').addClass('yellow');
+                console.log('d4 clicked');
+            });
+
+            $('#clearButton').click(function() {
+                $('td').removeClass('red blue green yellow');
+                $('td').addClass('white');
+                console.log('clear clicked');
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="clearButton">Clear</button><br><br>
+    <button id="a1Button">a1</button>
+		<button id="a2Button">a2</button>
+		<button id="a3Button">a3</button>
+		<button id="a4Button">a4</button>
+		<br><br>
+		<button id="b1Button">b1</button>
+		<button id="b2Button">b2</button>
+		<button id="b3Button">b3</button>
+		<button id="b4Button">b4</button>
+		<br><br>
+		<button id="c1Button">c1</button>
+		<button id="c2Button">c2</button>
+		<button id="c3Button">c3</button>
+		<button id="c4Button">c4</button>
+		<br><br>
+		<button id="d1Button">d1</button>
+		<button id="d2Button">d2</button>
+		<button id="d3Button">d3</button>
+		<button id="d4Button">d4</button>
+		<br><br>
+		<table>
+			<tr>
+				<td id="a1">a1</td>
+				<td id="a2">a2</td>
+				<td id="a3">a3</td>
+				<td id="a4">a4</td>
+			</tr>
+			<tr>
+				<td id="b1">b1</td>
+				<td id="b2">b2</td>
+				<td id="b3">b3</td>
+				<td id="b4">b4</td>
+			</tr>
+			<tr>
+				<td id="c1">c1</td>
+				<td id="c2">c2</td>
+				<td id="c3">c3</td>
+				<td id="c4">c4</td>
+			</tr>
+			<tr>
+				<td id="d1">d1</td>
+				<td id="d2">d2</td>
+				<td id="d3">d3</td>
+				<td id="d4">d4</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
