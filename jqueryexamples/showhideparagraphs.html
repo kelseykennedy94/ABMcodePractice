@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paragraphs</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        $('#paragraph1').find('p:not(:first)').hide();
+        $('#paragraph2').find('p').hide();
+        $('#paragraph3').find('p:last').show();
+    });
+</script>
+<style>
+
+</style>
+<body>
+        <div id="paragraph1">
+            <p>First paragraph</p>
+        </div>
+        <div id="paragraph2">
+            <p>Second paragraph</p>
+        </div>
+        <div id="paragraph3">
+            <p>Third paragraph</p>
+        </div>
+</body>
+</html>

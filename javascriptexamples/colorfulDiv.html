@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>colorful divs</title>
+    <style>
+        .red {
+            background-color: red;
+            display: none;
+        }
+
+        .green {
+            background-color: limegreen;
+            display: none;
+        }
+
+        .blue {
+            background-color: royalblue;
+            display: none;
+        }
+    </style>
+    <script>
+        var toggleRedDiv = () => {
+            var redDiv = document.getElementById("red-div");
+            var greenDiv = document.getElementById("green-div");
+            var blueDiv = document.getElementById("blue-div");
+            redDiv.style.display = "block";
+            greenDiv.style.display = "none";
+            blueDiv.style.display = "none";
+        };
+
+        var toggleGreenDiv = () => {
+            var redDiv = document.getElementById("red-div");
+            var greenDiv = document.getElementById("green-div");
+            var blueDiv = document.getElementById("blue-div");
+            redDiv.style.display = "none";
+            greenDiv.style.display = "block";
+            blueDiv.style.display = "none";
+        };
+
+        var toggleBlueDiv = () => {
+            var redDiv = document.getElementById("red-div");
+            var greenDiv = document.getElementById("green-div");
+            var blueDiv = document.getElementById("blue-div");
+            redDiv.style.display = "none";
+            greenDiv.style.display = "none";
+            blueDiv.style.display = "block";
+        };
+
+        var showAllDivs = () => {
+            var redDiv = document.getElementById("red-div");
+            var greenDiv = document.getElementById("green-div");
+            var blueDiv = document.getElementById("blue-div");
+            redDiv.style.display = "block";
+            greenDiv.style.display = "block";
+            blueDiv.style.display = "block";
+        };
+    </script>
+</head>
+<body>
+    <button onclick="toggleRedDiv()">Red</button>
+    <button onclick="toggleGreenDiv()">Green</button>
+    <button onclick="toggleBlueDiv()">Blue</button>
+    <button onclick="showAllDivs()">All</button>
+    <div id="red-div" class="red">
+        <p>This is the red div</p>
+    </div>
+    <div id="green-div" class="green">
+        <p>This is the green div</p>
+    </div>
+    <div id="blue-div" class="blue">
+        <p>This is the blue div</p>
+    </div>
+</body>
+</html>

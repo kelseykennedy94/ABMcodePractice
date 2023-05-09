@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paragraphs</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        var $divs = $('div');
+        var nums = [];
+
+        $divs.each(function () {
+            var val = parseInt($(this).text());
+            nums.push(val);
+        });
+
+        var sum = nums.reduce(function (a, b) { return a + b; });
+        var mean = sum / nums.length;
+
+        nums.sort(function (a, b) { return a - b; });
+        var median = nums.length % 2 === 0 ? (nums[nums.length / 2 - 1] + nums[nums.length / 2]) / 2 : nums[Math.floor(nums.length / 2)];
+
+        var mode = 0;
+        var maxCount = 0;
+        for (var i = 0; i < nums.length; i++) {
+            var count = 0;
+            for (var j = i; j < nums.length; j++) {
+                if (nums[j] === nums[i]) {
+                    count++;
+                }
+            }
+            if (count > maxCount) {
+                mode = nums[i];
+                maxCount = count;
+            }
+        }
+
+        console.log('Mean: ' + mean);
+        console.log('Median: ' + median);
+        console.log('Mode: ' + mode);
+    });
+</script>
+<style>
+
+</style>
+<body>
+    <div> 1 </div>
+    <div> 2 </div>
+    <div> 3 </div>
+    <div> 4 </div>
+    <div> 5 </div>
+    <div> 6 </div>
+    <div> 7 </div>
+    <div> 8 </div>
+    <div> 9 </div>
+    <div> 10 </div>
+</body>
+</html>

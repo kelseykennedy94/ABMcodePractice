@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arrow Functions</title>
+</head>
+<body>
+    <script>
+        // 1st. 1-100
+        const print1to100 = () => {
+            for (let i = 1; i <= 100; i++) {
+                console.log(i);
+            }
+        };
+        print1to100();
+
+        // 2nd. 1-100 even numbers
+        const printEvenNumbers = () => {
+            for (let i = 2; i <= 100; i += 2) {
+                console.log(i);
+            }
+        };
+        printEvenNumbers();
+
+        // 3rd. 100-1 odd numbers
+        const printOddNumbers = () => {
+            for (let i = 99; i >= 1; i -= 2) {
+                console.log(i);
+            }
+        };
+        printOddNumbers();
+
+        // 4th. Table of 8
+        const printTableOf8 = () => {
+            for (let i = 8; i <= 80; i += 8) {
+                console.log(i);
+            }
+        };
+        printTableOf8();
+    </script>
+</body>
+</html>
