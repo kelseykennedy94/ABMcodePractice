@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          margin-top: 20px;
+        }
+        th, td {
+          padding: 10px;
+          text-align: left;
+        }
+        th {
+          cursor: pointer;
+        }
+        th:hover {
+          background-color: #f5f5f5;
+        }
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        #searchInput {
+          padding: 5px;
+          margin-right: 10px;
+        }
+        #searchButton {
+          padding: 5px 10px;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+        }
+        #searchButton:hover {
+          background-color: #0056b3;
+        }
+        .pagination-links {
+          margin-top: 10px;
+        }
+        .pagination-links a {
+          margin: 0 5px;
+          text-decoration: none;
+          color: #007bff;
+        }
+        .pagination-links a:hover {
+          text-decoration: underline;
+        }
+        .pagination-links .page-link.active {
+          font-weight: bold;
+          color: #ff6600; /* Change to the color you prefer */
+        }.pagination-links .page-link.active {
+          font-weight: bold;
+          color: #ff6600; /* Change to the color you prefer */
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="searchInput" placeholder="Search">
+    <button id="searchButton">Search</button>
+    <table>
+        <thead>
+            <tr>
+                <th><a href="#" id="sortLink">Name</a></th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    <div id="pagination">
+        <span class="pagination-links">
+            <a href="#" class="page-link" data-page="1">1</a>
+            <a href="#" class="page-link" data-page="2">2</a>
+            <a href="#" class="page-link" data-page="3">3</a>
+        </span>
+    </div>
+
+    <script>
+        var data = [
+            { name: "Basant", gender: "Male", age: 25 },
+            { name: "Kelsey", gender: "Female", age: 30 },
+            { name: "Dmytro", gender: "Male", age: 28 },
+            { name: "Eric", gender: "Male", age: 22 },
+            { name: "Rownie", gender: "Male", age: 27 },
+            { name: "Israa", gender: "Female", age: 23 },
+            { name: "John", gender: "Male", age: 29 },
+            { name: "Tyler", gender: "Male", age: 31 },
+            { name: "Ryan", gender: "Male", age: 46 },
+            { name: "Lisa", gender: "Female", age: 29 },
+            { name: "Toni", gender: "Female", age: 41 },
+            { name: "Finn", gender: "Male", age: 20 },
+            { name: "Rakesh", gender: "Male", age: 27 },
+            { name: "Jake", gender: "Male", age: 25 },
+        
+        ];
+        var itemsPerPage = 5;
+        var currentPage = 1;
+        var totalPages = Math.ceil(data.length / itemsPerPage);
+
+        var sortedAsc = true;
+        var table = document.querySelector('table');
+        var sortLink = document.getElementById('sortLink');
+        var searchInput = document.getElementById('searchInput');
+        var searchButton = document.getElementById('searchButton');
+        var tableBody = table.querySelector('tbody');
+        var pageLinks = document.querySelectorAll('.page-link');
+
+        populateTable(data);
+
+        sortLink.addEventListener('click', sortTable);
+        searchButton.addEventListener('click', searchNames);
+        pageLinks.forEach(link => link.addEventListener('click', goToPage));
+        table.addEventListener('dblclick', makeCellEditable);
+        table.addEventListener('blur', saveEditedCell);
+
+        function populateTable(data) {
+            tableBody.innerHTML = '';
+            var startIndex = (currentPage - 1) * itemsPerPage;
+            var endIndex = startIndex + itemsPerPage;
+            var dataPage = data.slice(startIndex, endIndex);
+
+            dataPage.forEach(entry => {
+                var row = document.createElement('tr');
+                var nameCell = document.createElement('td');
+                var genderCell = document.createElement('td');
+                var ageCell = document.createElement('td');
+
+                nameCell.textContent = entry.name;
+                genderCell.textContent = entry.gender;
+                ageCell.textContent = entry.age;
+
+                row.appendChild(nameCell);
+                row.appendChild(genderCell);
+                row.appendChild(ageCell);
+
+                tableBody.appendChild(row);
+            });
+
+            pageLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') == currentPage) {
+                    link.classList.add('active');
+                }
+            });        }
+
+        function sortTable() {
+            data.sort((a, b) => {
+                const nameA = a.name.toLowerCase();
+                const nameB = b.name.toLowerCase();
+                if (sortedAsc) {
+                    return nameA.localeCompare(nameB);
+                } else {
+                    return nameB.localeCompare(nameA);
+                }
+            });
+            sortedAsc = !sortedAsc;
+            populateTable(data);        }
+
+        function searchNames() {
+            var searchTerm = searchInput.value.toLowerCase();
+            var filteredData = data.filter(entry => entry.name.toLowerCase().includes(searchTerm));
+
+            totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            currentPage = 1;        }
+
+        function goToPage(event) {
+            event.preventDefault();
+            currentPage = parseInt(event.target.getAttribute('data-page'));
+            populateTable(data);        }
+
+        function makeCellEditable(event) {
+            var targetCell = event.target;
+            if (targetCell.tagName === 'TD') {
+                targetCell.setAttribute('contenteditable', true);
+                targetCell.focus();
+            }
+        }
+
+        function saveEditedCell(event) {
+            var editedCell = event.target;
+            if (editedCell.tagName === 'TD') {
+                var rowIndex = editedCell.parentNode.rowIndex - 1;
+                var columnIndex = editedCell.cellIndex;
+                var newValue = editedCell.textContent;
+                if (data[rowIndex]) {
+                    if (columnIndex === 0) {
+                        data[rowIndex].name = newValue;
+                    } else if (columnIndex === 1) {
+                        data[rowIndex].gender = newValue;
+                    } else if (columnIndex === 2) {
+                        data[rowIndex].age = parseInt(newValue);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
