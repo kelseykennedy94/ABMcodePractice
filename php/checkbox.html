@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #58907c;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #69ad95;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+        #headerCheckbox {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="headerCheckbox"></th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" class="dataCheckbox"></td>
+                <td>1</td>
+                <td>John</td>
+                <td>Male</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="dataCheckbox"></td>
+                <td>2</td>
+                <td>Kelsey</td>
+                <td>Female</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="dataCheckbox"></td>
+                <td>3</td>
+                <td>Israa</td>
+                <td>Female</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="dataCheckbox"></td>
+                <td>4</td>
+                <td>Rownie</td>
+                <td>Male</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="dataCheckbox"></td>
+                <td>5</td>
+                <td>Basant</td>
+                <td>Male</td>
+                <td>30</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const headerCheckbox = document.getElementById('headerCheckbox');
+        const dataCheckboxes = document.querySelectorAll('.dataCheckbox');
+
+        headerCheckbox.onclick = function() {
+            const isChecked = this.checked;
+            dataCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = isChecked;
+            });
+        };
+    </script>
+</body>
+</html>

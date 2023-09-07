@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            padding: 20px;
+        }
+
+        #media-controls {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        button {
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        #playButton {
+            background-color: #5cb85c;
+            color: #fff;
+        }
+
+        #pauseButton {
+            background-color: #d9534f;
+            color: #fff;
+        }
+
+        #volumeUpButton, #volumeDownButton {
+            background-color: #800080;
+            color: #fff;
+        }
+        #rewindButton, #fastRewindButton {
+            background-color: #139ecd;
+            color: #fff;
+        }
+        #fastForwardButton, #fastestForwardButton {
+            background-color: #139ecd;
+            color: #fff;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+      </style>
+</head>
+<body>
+    <h1>Media Controls</h1>
+    <p id="currentTime">00:00:00</p>
+    <p id="currentVolume">Volume: 50%</p>
+    <button id="playButton">Play</button>
+    <button id="pauseButton">Pause</button></body><br>
+    <button id="rewindButton"><<< Fast Rewind</button>
+    <button id="fastRewindButton"><< Rewind</button>
+    <button id="fastForwardButton">Forward >></button>
+    <button id="fastestForwardButton">FastForward >></button><br>
+    <button id="volumeDownButton">Volume -</button>
+    <button id="volumeUpButton">Volume +</button>
+
+    <script>
+        const playButton = document.getElementById('playButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const rewindButton = document.getElementById('rewindButton');
+        const fastRewindButton = document.getElementById('fastRewindButton');
+        const fastForwardButton = document.getElementById('fastForwardButton');
+        const fastestForwardButton = document.getElementById('fastestForwardButton');
+        const volumeUpButton = document.getElementById('volumeUpButton');
+        const volumeDownButton = document.getElementById('volumeDownButton');
+        const currentTimeDisplay = document.getElementById('currentTime');
+        const currentVolumeDisplay = document.getElementById('currentVolume');
+
+        let isPlaying = false;
+        let currentTime = 0;
+        let volume = 0.5;
+        let playbackRate = 1;
+
+        function updateCurrentTime() {
+            const minutes = parseInt(currentTime / 60);
+            const seconds = parseInt(currentTime % 60);
+            const milliseconds = parseInt((currentTime - parseInt(currentTime)) * 1000);
+            currentTimeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3, '0')}`;
+        }
+
+        function updateVolumeDisplay() {
+            currentVolumeDisplay.textContent = `Volume: ${(volume * 100).toFixed(0)}%`;
+        }
+
+        playButton.addEventListener('click', () => {
+            if (!isPlaying) {
+                isPlaying = true;
+                playButton.disabled = true;
+                pauseButton.disabled = false;
+                const interval = setInterval(() => {
+                    currentTime += 0.1 * playbackRate;
+                    updateCurrentTime();
+                    if (!isPlaying) {
+                        clearInterval(interval);
+                    }
+                }, 100);
+            }
+        });
+
+        pauseButton.addEventListener('click', () => {
+            isPlaying = false;
+            playButton.disabled = false;
+            pauseButton.disabled = true;
+        });
+
+        rewindButton.addEventListener('click', () => {
+            currentTime -= 5;
+            if (currentTime < 0) {
+                currentTime = 0;
+            }
+            updateCurrentTime();
+        });
+
+        fastRewindButton.addEventListener('click', () => {
+            currentTime -= 10;
+            if (currentTime < 0) {
+                currentTime = 0;
+            }
+            updateCurrentTime();
+        });
+
+        fastForwardButton.addEventListener('click', () => {
+            currentTime += 5;
+            updateCurrentTime();
+        });
+
+        fastestForwardButton.addEventListener('click', () => {
+            currentTime += 10;
+            updateCurrentTime();
+        });
+
+        volumeUpButton.addEventListener('click', () => {
+            if (volume < 1) {
+                volume += 0.1;
+                updateVolumeDisplay();
+            }
+        });
+
+        volumeDownButton.addEventListener('click', () => {
+            if (volume > 0) {
+                volume -= 0.1;
+                updateVolumeDisplay();
+            }
+        });
+
+        updateCurrentTime();
+        updateVolumeDisplay();
+    </script>
+</body>
+</html>
